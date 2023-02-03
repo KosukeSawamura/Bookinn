@@ -1,2 +1,22 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h4 class="text-light p-4 mb-0">Post Book</h4>
+      <div class="form-body p-4">
+        <%= form_with model: @book, url: books_path, method: :POST do |f| %>
+          <%= f.label :image, "Image", class: "text-light" %><br>
+          <%= f.file_field :image, accept: "image/*", class: "text-light" %><br>
+          <%= f.label :title, "Title", class: "text-light" %><br>
+        	<%= f.text_field :title %><br>
+        	<%= f.label :author, "Author", class: "text-light" %><br>
+				  <%= f.text_field :author %><br>
+				  <%= f.label :isbn, "ISBN", class: "text-light" %><br>
+				  <%= f.text_field :isbn %><br>
+				  <%= f.label :tag_list, "tags", class: "text-light" %><br>
+          <%= f.text_field:tag_list, value: @book.tag_list.join(',') %><br>
+				  <%= f.submit "Post", class: "btn btn-secondary btn-sm" %>
+				<% end %>
+      </div>
+    </div>
+  </div>
+</div>
