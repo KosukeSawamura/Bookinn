@@ -25,10 +25,13 @@
           <%= link_to "LogOut", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Post', new_book_path, class: 'nav-link text-light' %>
+          <%= link_to 'NewPost', new_book_path, class: 'nav-link text-light' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Mypage', user_path(current_user.id), class: 'nav-link text-light' %>
+          <%= link_to 'Books', books_path, class: 'nav-link text-light' %>
+        </li>
+        <li class="nav-item">
+          <%#= link_to 'Mypage', user_path(current_user.id), class: 'nav-link text-light' %>
         </li>
         <% else %>
         <li class="nav-item">

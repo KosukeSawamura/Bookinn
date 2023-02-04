@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @book = Book.new
   end
@@ -11,14 +13,19 @@ class BooksController < ApplicationController
 
   def index
      @genres = Genre.all
-    if params[:genre_id]
-      @books=Book.where(genre_id: params[:genre_id]).order(created_at: :desc).page(params[:page]).per(16)
+    if params[:id]
+     tag_name = Book.all.tag_counts.find(params[:id]).name
+     @books = Book.all.tagged_with(tag_name).order(created_at: :asc).page(params[:page]).per(12)
     else
-      @books = Book.all.order(created_at: :asc).page(params[:page]).per(16)
+      @books = Book.all.order(created_at: :asc).page(params[:page]).per(12)
     end
+      @tags = @books.tag_counts_on(:tags)
   end
 
   def show
+     @newbook=Book.new
+    @book=Book.find(params[:id])
+    @book_comment = BookComment.new
   end
 
   def edit
@@ -27,6 +34,6 @@ class BooksController < ApplicationController
   private
 
   def books_params
-    params.require(:book).permit(:title, :author, :isbn, :image, :tag_list)
+    params.require(:book).permit(:title, :author, :isbn, :image, :tag_list, :outline, :comment)
   end
 end
