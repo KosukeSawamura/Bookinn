@@ -1,2 +1,40 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="text-light">
+
+  <div class="container">
+    <div class="row">
+      <h2 class="col-12 mx-auto">Book detail</h2>
+      <div class="col-3 col-sm-4">
+           <% if @book.image.attached? %>
+    							<%= image_tag @book.image, size: "200x275" %>
+  							<% else %>
+    							<%= image_tag 'no_image', size: "100x100" %>
+  							<% end %>
+      </div>
+      <div class="col-8 col-sm-8">
+        title:「<%= @book.title %>」<br>
+        author:　<%= @book.author %><br>
+        tag: <%= @book.tag_list.to_s %><br>
+        ISBN: <%= @book.isbn %><br>
+        outline: <%= @book.outline %><br>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <h3 class="col-12 mx-auto">comments</h3>
+    </div>
+      <div class="row">
+        <div class="col-4">
+          <%= form_with model: [@book, @book_comment], local: false do |f| %>
+            <%= f.text_area :comment, rows:'5' %><br>
+            <%= f.submit "post" %>
+          <% end %>
+        </div>
+        <div class="col-8">
+          <% @book.book_comments.each do |book_comment| %>
+            <%= book_comment.user.name %><br>
+            <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
+            <%= book_comment.comment %><br><br>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

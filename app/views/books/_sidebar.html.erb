@@ -14,12 +14,10 @@
       <tr>
         <td class="text-center text-light"><%= link_to "List All", books_path %></td>
       </tr>
-    <% genres.each do |genre| %>
+    <% @tags.each do |tag| %>
       <tr>
         <td class="align-middle text-center">
-          <%= link_to book_path(genre_id: genre.id) do %>
-            <%= genre.name %>
-          <% end %>
+          <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.id) %>
         </td>
       </tr>
     <% end %>

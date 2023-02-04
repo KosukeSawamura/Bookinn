@@ -1,19 +1,19 @@
-<div class="container">
+<div class="container text-light">
 	<div class="row">
 		<div class= "col-3">
 			<%= render 'sidebar', genres: @genres %>
 		</div>
 		<div class="col-9">
-  		<h2 class="m-5 text-light">Books (<%= @books.count %>/<%= @books.total_count %>)</h2>
+  		<h2 class="m-5">Books</h2>
 
-			<div class="row mx-auto text-center">
+			<div class="row mx-auto text-center ">
 				<% @books.each do |book| %>
 					<div class="col-3">
 						<%= link_to book_path(book.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
-							 <% if book.image.attached? %>
-    							<%= image_tag book.image, size: "100x100" %>
+							<% if book.image.attached? %>
+    							<%= image_tag book.image, size: "100x150" %><br>
   							<% else %>
-    							<%= image_tag 'no_image', size: "100x100" %>
+    							<%= image_tag 'no_image', size: "100x100" %><br>
   							<% end %>
 							<%= book.title %><br>
 						<% end %>
