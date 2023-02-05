@@ -28,11 +28,13 @@
             <%= f.submit "post" %>
           <% end %>
         </div>
-        <div class="col-8">
-          <% @book.book_comments.each do |book_comment| %>
-            <%= book_comment.user.name %><br>
-            <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
-            <%= book_comment.comment %><br><br>
+        <div class="col-8 card shadow bg-dark">
+          <% @book.book_comments.reverse_each do |book_comment| %>
+            <div class="card shadow mb-5 bg-dark">
+              <h5 class="card-title"><%= book_comment.user.name %></h5>
+              <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
+              <p class="card-text"><%= book_comment.comment %></p>
+            </div>
           <% end %>
         </div>
       </div>
