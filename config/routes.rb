@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get '/books/tag/:id', to: 'books#index', as: 'tag'
-  resources :books, only: [:new, :create, :index, :show, :edit] do
+
+  resources :users
+  put "/users/:id/hide" => "users#hide", as: 'users_hide'
+
+  resources :books, only: [:new, :create, :destroy, :index, :show, :edit] do
     resources :book_comments, only: [:create, :destroy]
   end
 

@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
          has_many :books
          has_many :book_comments
+
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 end

@@ -16,6 +16,9 @@
         tag: <%= @book.tag_list.to_s %><br>
         ISBN: <%= @book.isbn %><br>
         outline: <%= @book.outline %><br>
+        <% if @book.user_id == current_user or admin_signed_in? %>
+          <%= link_to "Delete", book_path(@book.id), method: :delete,  data: { confirm: '本当に削除しますか？' } %>
+        <% end %>
       </div>
     </div>
     <div class="row mt-5">
@@ -34,6 +37,9 @@
               <h5 class="card-title"><%= book_comment.user.name %></h5>
               <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
               <p class="card-text"><%= book_comment.comment %></p>
+              <% if book_comment.user == current_user or admin_signed_in? %>
+                <%= link_to "Delete", book_book_comment_path(book_comment.id), method: :delete,  data: { confirm: '本当に削除しますか？' } %>
+              <% end %>
             </div>
           <% end %>
         </div>

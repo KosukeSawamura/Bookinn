@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def authentication_admin_user
+    if admin_signed_in?
+    elsif user_signed_in?
+    else
+      redirect_to root_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
