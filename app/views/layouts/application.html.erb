@@ -20,6 +20,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+
+
         <% if user_signed_in? or admin_signed_in? %>
         <li class="nav-item">
           <%= link_to "LogOut", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
@@ -31,7 +33,7 @@
           <%= link_to 'Books', books_path, class: 'nav-link text-light' %>
         </li>
         <li class="nav-item">
-          <%#= link_to 'Mypage', user_path(current_user.id), class: 'nav-link text-light' %>
+          <%= link_to "退会", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
         </li>
         <% else %>
         <li class="nav-item">

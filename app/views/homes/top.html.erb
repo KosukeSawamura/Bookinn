@@ -18,6 +18,9 @@
 
         <div class="btn-wrapper col-10 mx-auto">
             <div class="row">
+              <%= link_to "Guest Log in", users_guest_sign_in_path, data: { turbo_method: :post }, class:"btn btn-secondary btn-block mb-3 sign_in" %>
+            </div>
+            <div class="row">
               <%= link_to "Log in", user_session_path, class:"btn btn-info btn-block mb-3 sign_in" %>
             </div>
             <div class="row">

@@ -27,6 +27,12 @@ class Users::SessionsController < Devise::SessionsController
 
   before_action :reject_user, only: [:create]
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to books_path, notice: "ゲストユーザーとしてログインしました"
+  end
+
   protected
   def after_sign_in_path_for(resource)
     books_path

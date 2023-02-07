@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :users
   put "/users/:id/hide" => "users#hide", as: 'users_hide'
 
-  resources :books, only: [:new, :create, :destroy, :index, :show, :edit] do
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
+
+  resources :books, only: [:new, :create, :destroy, :index, :show, :edit, :update] do
     resources :book_comments, only: [:create, :destroy]
   end
 

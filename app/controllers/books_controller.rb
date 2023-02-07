@@ -8,6 +8,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(books_params)
+    @book.user = current_user
     @book.save
     redirect_to book_path(@book.id)
   end
@@ -26,6 +27,19 @@ class BooksController < ApplicationController
       @books = Book.all.order(created_at: :asc).page(params[:page]).per(12)
     end
       @tags = @books.tag_counts_on(:tags)
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update(books_params)
+      redirect_to book_path(@book), notice: "You have updated book successfully."
+    else
+      render :edit
+    end
   end
 
   def show
