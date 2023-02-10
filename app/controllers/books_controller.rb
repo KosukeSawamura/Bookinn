@@ -19,14 +19,16 @@ class BooksController < ApplicationController
   end
 
   def index
-     @genres = Genre.all
     if params[:id]
      tag_name = Book.all.tag_counts.find(params[:id]).name
      @books = Book.all.tagged_with(tag_name).order(created_at: :asc).page(params[:page]).per(12)
     else
       @books = Book.all.order(created_at: :asc).page(params[:page]).per(12)
     end
-      @tags = @books.tag_counts_on(:tags)
+      # 全てのタグを取得したいのですべてのBookデータを配列に格納する
+     @bookAll = Book.all
+     # book配列に紐づいている、tagをすべて取得する
+     @tags_all = @bookAll.tag_counts_on(:tags)
   end
 
   def edit
@@ -48,8 +50,6 @@ class BooksController < ApplicationController
     @book_comment = BookComment.new
   end
 
-  def edit
-  end
 
   private
 

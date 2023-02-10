@@ -13,7 +13,11 @@
   <%= f.text_field :isbn %><br>
 
   <%= f.label :tag_list, "tags", class: "text-light" %><br>
-  <%#= f.text_field:tag_list, value: @book.tag_list.join(',') %><br>
+  <% if @book.tag_list.blank? %>
+  <%= f.text_field:tag_list %><br>
+  <% else %>
+  <%= f.text_field:tag_list, value: @book.tag_list.join(',') %><br>
+  <% end %>
 
   <%= f.label :outline, "outline", class: "text-light" %><br>
   <%= f.text_area :outline %><br>

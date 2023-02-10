@@ -14,7 +14,7 @@
       <tr>
         <td class="text-center text-light"><%= link_to "List All", books_path %></td>
       </tr>
-    <% @tags.each do |tag| %>
+    <% @tags_all.each do |tag| %>
       <tr>
         <td class="align-middle text-center">
           <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.id) %>
