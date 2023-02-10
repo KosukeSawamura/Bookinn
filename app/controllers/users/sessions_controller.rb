@@ -25,7 +25,7 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  before_action :reject_user, only: [:create]
+before_action :reject_user, only: [:create]
 
   def guest_sign_in
     user = User.guest

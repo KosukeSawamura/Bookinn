@@ -1,0 +1,43 @@
+<div class="container text-light">
+  <div class="row">
+    <div class="col-md-8 offset-md-1 my-3">
+      <h2 class="head-line title_h2 text-center mx-auto">会員一覧</h2>
+
+    <table class="table-dark table-bordered mx-auto">
+      <thead class="thead-dark">
+        <tr>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td>
+                <% if user.is_deleted == false %>
+                有効
+                <% else %>
+                無効
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "edit", edit_admin_path(user.id) %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+      <div class="mx-auto col-4 mb-5" >
+        <%= paginate @users %>
+      </dic>
+
+    </div>
+  </div>
+</div>
+</div>
