@@ -1,11 +1,10 @@
 <div class="text-light">
-
   <div class="container">
     <div class="row">
       <h2 class="col-12 mx-auto">Book detail</h2>
       <div class="col-3 col-sm-4">
            <% if @book.image.attached? %>
-    							<%= image_tag @book.image, size: "200x275" %>
+    							<%= link_to image_tag(@l_img), @url  %>
   							<% else %>
     							<%= image_tag 'no_image', size: "100x100" %>
   							<% end %>

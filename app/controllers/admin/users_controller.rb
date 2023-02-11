@@ -1,4 +1,4 @@
-class AdminsController < ApplicationController
+class Admin::UsersController < ApplicationController
   def index
     @users = User.all.page(params[:page]).per(10)
   end
@@ -10,10 +10,9 @@ class AdminsController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "successfully"
-      redirect_to edit_admin_path(@user)
+      redirect_to admin_users_path
     else
-      edit_admin_path(@user)
+      render :edit
     end
   end
 

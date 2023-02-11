@@ -8,10 +8,18 @@
 
 			<div class="row mx-auto text-center ">
 				<% @books.each do |book| %>
+				      <% result = RakutenWebService::Books::Book.search(isbn: book.isbn.gsub("-", "")) %>
+
+				      <% unless result.first.nil?  %>
+					      <% @m_img = result.first['mediumImageUrl'] %>
+				      <% else %>
+					      <% @m_img = nil %>
+				      <% end %>
 					<div class="col-3">
 						<%= link_to book_path(book.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
-							<% if book.image.attached? %>
-    							<%= image_tag book.image, size: "100x150" %><br>
+							<%  if @m_img %>
+    							<%#= image_tag book.image, size: "100x150" %><br>
+    							<%= image_tag(@m_img) %>
   							<% else %>
     							<%= image_tag 'no_image', size: "100x100" %><br>
   							<% end %>
