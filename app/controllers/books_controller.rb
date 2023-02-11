@@ -9,6 +9,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(books_params)
     @book.user = current_user
+
     @book.save
     redirect_to book_path(@book.id)
   end
@@ -45,9 +46,17 @@ class BooksController < ApplicationController
   end
 
   def show
-    @newbook=Book.new
     @book=Book.find(params[:id])
     @book_comment = BookComment.new
+    if params[:id]
+      #gsubでハイフンを取り除く
+      result = RakutenWebService::Books::Book.search(isbn: @book.isbn.gsub("-", ""))
+      #検索結果の配列の中から
+      @url = result.first['itemUrl']
+      @l_img = result.first['largeImageUrl']
+      #pp '----------------'
+      # pp result
+    end
   end
 
 

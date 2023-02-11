@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   get 'users/:id/edit' => 'users#edit', as: 'users_edit'
 
-  resources :admins, only: [:index, :show, :edit, :update]
+  namespace :admin do
+     resources :users, only: [:index, :show, :edit, :update]
+  end
 
   resources :books, only: [:new, :create, :destroy, :index, :show, :edit, :update] do
     resources :book_comments, only: [:create, :destroy]
