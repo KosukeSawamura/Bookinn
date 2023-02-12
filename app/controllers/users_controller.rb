@@ -3,10 +3,15 @@ class UsersController < ApplicationController
 
   def hide
 		@user = User.find(params[:id])
+    if current_user.email == 'guest@example.com'
+      reset_session
+      redirect_to :root
+    else
     	@user.update(is_deleted: true)
     	reset_session
     	redirect_to root_path
-	end
+    end
+  end
 
 	def edit
 	  @user = User.find(params[:id])

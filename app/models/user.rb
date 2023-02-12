@@ -7,6 +7,9 @@ class User < ApplicationRecord
          has_many :books
          has_many :book_comments
 
+        validates :name, presence: true
+        validates :email, presence: true
+        validates :encrypted_password, presence: true
 
   def active_for_authentication?
     super && (self.is_deleted == false)

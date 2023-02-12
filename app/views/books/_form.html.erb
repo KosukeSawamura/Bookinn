@@ -1,6 +1,6 @@
 <%= form_with model: book, local:true do |f| %>
 
-  <%= f.label :image, "Image", class: "text-light" %><br>
+  <%= f.label :image, "Image（ISBNから自動取得されます）", class: "text-light" %><br>
   <%= f.file_field :image, accept: "image/*", class: "text-light" %><br>
 
   <%= f.label :title, "Title", class: "text-light" %><br>
@@ -9,10 +9,10 @@
   <%= f.label :author, "Author", class: "text-light" %><br>
   <%= f.text_field :author %><br>
 
-  <%= f.label :isbn, "ISBN", class: "text-light" %><br>
-  <%= f.text_field :isbn %><br>
+  <%= f.label :isbn, "ISBN（半角数字で入力）", class: "text-light" %><br>
+  <%= f.text_field :isbn, placeholder: "半角数字" %><br>
 
-  <%= f.label :tag_list, "tags", class: "text-light" %><br>
+  <%= f.label :tag_list, "tags（「,」で区切って複数入力）", class: "text-light" %><br>
   <% if @book.tag_list.blank? %>
   <%= f.text_field:tag_list %><br>
   <% else %>
