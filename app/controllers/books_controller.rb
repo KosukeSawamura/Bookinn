@@ -55,8 +55,13 @@ class BooksController < ApplicationController
       #gsubでハイフンを取り除く
       result = RakutenWebService::Books::Book.search(isbn: @book.isbn.gsub("-", ""))
       #検索結果の配列の中から
+    unless result.first.nil?
       @url = result.first['itemUrl']
       @l_img = result.first['largeImageUrl']
+    else
+      @url = nil
+      @l_img = nil
+    end
       #pp '----------------'
       # pp result
     end
