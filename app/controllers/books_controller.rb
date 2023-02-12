@@ -10,8 +10,11 @@ class BooksController < ApplicationController
     @book = Book.new(books_params)
     @book.user = current_user
 
-    @book.save
-    redirect_to book_path(@book.id)
+    if @book.save
+      redirect_to book_path(@book.id)
+    else
+      render :new
+    end
   end
 
   def destroy
