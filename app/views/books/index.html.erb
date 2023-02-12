@@ -15,7 +15,7 @@
 				      <% else %>
 					      <% @m_img = nil %>
 				      <% end %>
-					<div class="col-3 card bg-dark">
+					<div class="col-3 card shadow-lg bg-dark">
 						<div class="card-img-top">
 							<%= link_to book_path(book.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
 								<%  if @m_img %>
@@ -25,7 +25,7 @@
     							<%= image_tag 'no_image', size: "100x100" %><br>
   							<% end %>
   					</div>
-  					<div class="card-title">
+  					<div class="card-title text-light">
 							<%= book.title %><br>
 						</div>
 						<% end %>
