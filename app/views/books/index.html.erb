@@ -1,0 +1,40 @@
+<div class="container text-light">
+	<div class="row">
+		<div class= "col-3">
+			<%= render 'sidebar', genres: @genres %>
+		</div>
+		<div class="col-9">
+  		<h2 class="m-5">Books</h2>
+
+			<div class="row mx-auto text-center ">
+				<% @books.each do |book| %>
+				      <% result = RakutenWebService::Books::Book.search(isbn: book.isbn.gsub("-", "")) %>
+
+				      <% unless result.first.nil?  %>
+					      <% @m_img = result.first['mediumImageUrl'] %>
+				      <% else %>
+					      <% @m_img = nil %>
+				      <% end %>
+					<div class="col-3 card shadow-lg bg-dark">
+						<div class="card-img-top">
+							<%= link_to book_path(book.id) ,style: "color: black;", data: {"turbolinks" => false} do %>
+								<%  if @m_img %>
+    							<%#= image_tag book.image, size: "100x150" %><br>
+    							<%= image_tag(@m_img) %><br>
+  							<% else %>
+    							<%= image_tag 'no_image', size: "100x100" %><br>
+  							<% end %>
+  					</div>
+  					<div class="card-title text-light">
+							<%= book.title %><br>
+						</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			<div class="col-5 mx-auto">
+				<%= paginate @books %>
+			</div>
+		</div>
+	</div>
+</div>

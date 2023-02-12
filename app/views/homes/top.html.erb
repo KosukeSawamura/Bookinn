@@ -1,0 +1,33 @@
+<main>
+  <div>
+  <%= flash[:notice] %>
+</div>
+  <p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-11 col-sm-10 col-lg-9 col-xl-6 text-light">
+        <h2>welcome to
+        <strong>"The book on the sheets."</strong>
+        </h2>
+
+        <p>
+        <strong>"The book on the sheets."</strong>,
+        </p>
+        <p>In this place, share your opinions, implessions, emotions and love</p>
+        <p>about your favorite books.</p>
+
+        <div class="btn-wrapper col-10 mx-auto">
+            <div class="row">
+              <%= link_to "Guest Log in", users_guest_sign_in_path, method: :post, class:"btn btn-secondary btn-block mb-3 sign_in" %>
+            </div>
+            <div class="row">
+              <%= link_to "Log in", user_session_path, class:"btn btn-info btn-block mb-3 sign_in" %>
+            </div>
+            <div class="row">
+              <%= link_to "Sign up", new_user_registration_path, class:"btn btn-success btn-block" %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h4 class="text-light p-4 mb-0">Post Book</h4>
+      <div class="form-body p-4">
+        <%= render 'error_messages',book: @book %>
+       <%= render 'form', book: @book %>
+      </div>
+      <%= link_to 'Back to Books index', books_path, class: "back" %>
+    </div>
+  </div>
+</div>

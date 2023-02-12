@@ -1,0 +1,25 @@
+<div class="m-5">
+  <%= link_to  new_book_path, class:"btn btn-outline-secondary btn-block" do %>
+  new
+  <% end %>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th class="text-center text-light">Genres</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="text-center text-light"><%= link_to "List All", books_path %></td>
+      </tr>
+    <% @tags_all.each do |tag| %>
+      <tr>
+        <td class="align-middle text-center">
+          <%= link_to "#{tag.name}(#{tag.taggings_count})", tag_path(tag.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,50 @@
+<div class="text-light">
+  <div class="container">
+    <div class="row">
+      <h2 class="col-12 mx-auto">Book detail</h2>
+      <div class="col-3 col-sm-4">
+           <% if @book.image.attached? %>
+    							<%= link_to image_tag(@l_img), @url  %>
+  							<% else %>
+    							<%= image_tag 'no_image', size: "100x100" %>
+  							<% end %>
+      </div>
+      <div class="col-8 col-sm-8">
+        title:「<%= @book.title %>」<br>
+        author:　<%= @book.author %><br>
+        tag: <%= @book.tag_list.to_s %><br>
+        ISBN: <%= @book.isbn %><br>
+        outline: <%= @book.outline %><br>
+        <% if @book.user == current_user or admin_signed_in? %>
+          <%= link_to "Delete", book_path(@book.id), method: :delete,  data: { confirm: '本当に削除しますか？' }, class: "btn-sm btn-outline-danger" %>
+          <%= link_to "Edit", edit_book_path(@book.id),  class: "btn-sm btn-outline-light" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <h3 class="col-12 mx-auto">comments</h3>
+    </div>
+      <div class="row">
+        <div class="col-4">
+          <%= form_with model: [@book, @book_comment], local: false do |f| %>
+            <%= f.text_area :comment, rows:'5' %><br>
+            <%= f.submit "post" %>
+          <% end %>
+        </div>
+        <div class="col-8 card shadow bg-dark">
+          <% @book.book_comments.reverse_each do |book_comment| %>
+            <div class="card shadow mb-5 bg-dark">
+              <h5 class="card-title"><%= book_comment.user.name %></h5>
+              <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
+              <p class="card-text"><%= book_comment.comment %></p>
+              <div class="col-3">
+                <% if book_comment.user == current_user or admin_signed_in? %>
+                  <%= link_to "Delete", book_book_comment_path(book_comment.id), method: :delete,  data: { confirm: '本当に削除しますか？' }, class: "btn-sm btn-outline-danger" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

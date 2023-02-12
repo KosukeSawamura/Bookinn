@@ -1,0 +1,11 @@
+<div class= "container text-light">
+<h4>User Name</h4>
+<%= @user.name %>
+
+<h4>email</h4>
+<%= @user.email %><br><br>
+
+<%= link_to "退会", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+
+<%= link_to "Edit", edit_user_path, class: "btn btn-outline-info" %>
+</div>
