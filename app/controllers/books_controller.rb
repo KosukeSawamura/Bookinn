@@ -62,8 +62,8 @@ class BooksController < ApplicationController
       @url = nil
       @l_img = nil
     end
-      #pp '----------------'
-      # pp result
+      # pp '----------------'
+      # pp result.first
     end
   end
 

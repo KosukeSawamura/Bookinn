@@ -3,7 +3,7 @@
     <div class="row">
       <h2 class="col-12 mx-auto">Book detail</h2>
       <div class="col-3 col-sm-4">
-           <% if @book.image.attached? %>
+           <% if @l_img %>
     							<%= link_to image_tag(@l_img), @url  %>
   							<% else %>
     							<%= image_tag 'no_image.jpg', size: "100x100" %>
