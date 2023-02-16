@@ -25,8 +25,8 @@
 
 ## 利用時の注意点
 - 管理者アカウントへのログインはhttp://35.76.59.15/admins/sign_inから。
-    -email:admin@admin
-    -password:testtest
+    - email:admin@admin
+    - password:testtest
 - ゲストアカウントのユーザー情報変更はできません。退会機能は機能せずルート画面に戻るようになっています。
 
 
