@@ -23,6 +23,13 @@
 ・自分の好きなジャンルの本だけを探したいとき。
 ・好きな本の推し活がしたいとき。
 
+##利用時の注意点
+・管理者アカウントへのログインはhttp://35.76.59.15/admins/sign_inから。
+    email:admin@admin
+    password:testtest
+・ゲストアカウントのユーザー情報変更はできません。退会機能は機能せずルート画面に戻るようになっています。
+
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
