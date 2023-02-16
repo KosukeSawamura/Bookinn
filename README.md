@@ -23,9 +23,6 @@
 ・自分の好きなジャンルの本だけを探したいとき。
 ・好きな本の推し活がしたいとき。
 
-## 設計書
-
-
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
